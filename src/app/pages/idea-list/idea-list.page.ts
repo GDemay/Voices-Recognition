@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IdeaService, Idea } from 'src/app/services/idea.service';
 import { Observable } from 'rxjs';
 import {AuthService} from '../../services/auth.service';
-import {ToastController} from "@ionic/angular";
+import {ToastController} from '@ionic/angular';
 import {OneSignal} from '@ionic-native/onesignal/ngx';
 
 
