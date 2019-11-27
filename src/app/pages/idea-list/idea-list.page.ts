@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {AuthService} from '../../services/auth.service';
 import {ToastController} from '@ionic/angular';
 import {OneSignal} from '@ionic-native/onesignal/ngx';
+import { RestClientService } from '../../services/rest-client.service';
 
 
 @Component({
@@ -15,10 +16,9 @@ export class IdeaListPage implements OnInit {
   private ideas: Observable<Idea[]>;
 
 
-  constructor(public authService: AuthService, private ideaService: IdeaService, private toastCtrl: ToastController, private oneSignal: OneSignal) {
+  constructor(public authService: AuthService, private ideaService: IdeaService, private toastCtrl: ToastController, private oneSignal: OneSignal,
+              private restClient: RestClientService) {
   }
-
-
 
 
 
@@ -58,5 +58,8 @@ export class IdeaListPage implements OnInit {
     this.ideaService.deleteIdea(idea.id);
   }
 
-
+  try_get_request() {
+       console.log('test');
+       console.log(this.restClient.RecognizeGoogleApi());
+  }
 }
