@@ -50,7 +50,6 @@ export class IdeaListPage implements OnInit {
   }
 
   try_get_request() {
-       console.log('test');
-       console.log(this.restClient.RecognizeGoogleApi());
+    console.log(this.restClient.RecognizeGoogleApi());
   }
 }
