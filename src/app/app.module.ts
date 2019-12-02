@@ -22,8 +22,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {OneSignal} from '@ionic-native/onesignal/ngx';
+import {Base64} from '@ionic-native/base64/ngx';
 
 
+// @ts-ignore
 // @ts-ignore
 // @ts-ignore
 // @ts-ignore
@@ -48,6 +50,7 @@ import {OneSignal} from '@ionic-native/onesignal/ngx';
     StatusBar,
     SplashScreen,
       SpeechRecognition,
+      Base64,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     OneSignal,
 

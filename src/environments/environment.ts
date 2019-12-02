@@ -17,6 +17,11 @@ export const environment = {
 
   google_api: {
     apiKey: 'AIzaSyApQMZ-6C_PxZy0rWIneCEMKNBGzNq1GAY'
+  },
+
+  onesignal_api: {
+    appId: 'be80bc4a-d0d8-4944-a798-a0ace7272c0b',
+    googleProjectNumber: '703322744261'
   }
 };
 

@@ -3,8 +3,10 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Base64 } from '@ionic-native/base64/ngx';
-
+import { environment} from '../../environments/environment';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { ToastService } from '../services/toast.service';
+
 
 
 @Injectable({
@@ -13,18 +15,16 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class RestClientService {
 
     // tslint:disable-next-line:variable-name
-    private base_path = 'https://httpbin.org/get';
+    private base_path = 'https://speech.googleapis.com/v1/speech:recognize';
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private base64: Base64, private toastService: ToastService) { }
 
-    // Http Options
     httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json'
         })
     };
 
-    // @ts-ignore
     postdata = {
         audio: {
             // tslint:disable-next-line:max-line-length
@@ -39,17 +39,27 @@ export class RestClientService {
 
 
     RecognizeGoogleApi() {
-        this.postItem();
+        this.convert_audio_to_base64();
+        // this.postItem();
     }
 
+    convert_audio_to_base64() {
+        const filePath = '../../../resources/audio/audio.wav';
+        this.base64.encodeFile(filePath).then((base64File: string) => {
+            console.log(base64File);
+            this.toastService.showToast(base64File, 'success');
+        }, (err) => {
+            this.toastService.showToast(err, 'danger');
+        });
+    }
 
     // Get single student data by ID
     postItem() {
         // @ts-ignore
         // tslint:disable-next-line:max-line-length
-        return this.http.post('https://speech.googleapis.com/v1/speech:recognize?key=AIzaSyApQMZ-6C_PxZy0rWIneCEMKNBGzNq1GAY', this.postdata, this.httpOptions).subscribe(data => {
+        return this.http.post(this.base_path + '?key=' + environment.google_api.apiKey , this.postdata, this.httpOptions).subscribe(data => {
             console.log((data));
-            console.log('Pas d errerur');
+            console.log('Pas d erreur');
 
         }, error => {
             console.log(error);
@@ -58,12 +68,4 @@ export class RestClientService {
         });
     }
 
-    async getItem2() {
-        // @ts-ignore
-        return this.http.get('https://httpbin.org/get', this.postData, this.httpOptions).subscribe(data => {
-            console.log((data));
-        }, error => {
-            console.log(error);
-        });
-    }
 }
