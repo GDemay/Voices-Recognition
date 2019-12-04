@@ -1,3 +1,4 @@
+// @ts-ignore
 export const environment = {
   production: true,
 
@@ -10,5 +11,12 @@ export const environment = {
     messagingSenderId: '962491784043',
     appId: '1:962491784043:web:bf9d014995b576cbf60a2e',
     measurementId: 'G-C61TD9N7ML'
-  }
+  },
+  google_api: {
+    apiKey: 'AIzaSyApQMZ-6C_PxZy0rWIneCEMKNBGzNq1GAY'
+  },
+  onesignal_api: {
+    appId: 'be80bc4a-d0d8-4944-a798-a0ace7272c0b',
+    googleProjectNumber: '703322744261'
+  },
 };

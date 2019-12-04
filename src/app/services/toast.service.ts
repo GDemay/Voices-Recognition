@@ -14,7 +14,7 @@ export class ToastService {
     }
     this.toastCtrl.create({
       message: msg,
-      duration: 2000,
+      duration: 4000,
       position: 'top',
       color: color
     }).then(toast => toast.present());

@@ -23,8 +23,14 @@ import { HttpClientModule } from '@angular/common/http';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {OneSignal} from '@ionic-native/onesignal/ngx';
 import {Base64} from '@ionic-native/base64/ngx';
+import { File } from '@ionic-native/file';
+import { FilePath } from '@ionic-native/file-path/ngx';
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
 
 
+
+// @ts-ignore
+// @ts-ignore
 // @ts-ignore
 // @ts-ignore
 // @ts-ignore
@@ -45,12 +51,17 @@ import {Base64} from '@ionic-native/base64/ngx';
     AngularFireAuthModule,
     AngularFirestoreModule,
     HttpClientModule,
+
   ],
   providers: [
     StatusBar,
     SplashScreen,
       SpeechRecognition,
       Base64,
+    FilePath,
+    FileChooser,
+
+
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     OneSignal,
 
